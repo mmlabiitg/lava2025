@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAVA 2025 | IIT Guwahati</title>
+  <link rel="icon" type="image/png" href="logo_main_teal_gold.png">
+
+<style>
+
+/* ====== HTML/BODY ===== */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Agency FB', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: darkcyan;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('bg1.png') no-repeat center bottom fixed;
+    background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+    html, body {
+        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('bg2.jpg') no-repeat center bottom fixed;
+        background-size: cover;
+    }
+}
+
+
+/* ====== OVERLAY LAYER ===== */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 0, 0.03); 
+    z-index: 2;
+}
+
+
+/* ====== POLYGON LAYER ===== */
+.background-polygon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh; /* Top half of the screen */
+    background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0), /* Transparent at top */
+                rgba(255, 255, 255, 0) 90%, /* Still transparent halfway */
+                rgba(255, 255, 255, 1) 100% /* Solid at bottom for fade */
+                ),
+                url('background_polygon.png') no-repeat center top;
+    background-size:  100% 100%;
+    z-index: 1; /* Above background but below content */
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.2), rgba(0,0,0,0));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.2), rgba(0,0,0,0));
+}
+
+@media screen and (min-width: 769px) {
+    .background-polygon {
+        display:none;
+    }
+}
+
+
+/* ====== IITG LOGO ===== */
+.iitg-logo {
+    position: fixed;
+    top: 1%;
+    right: 2%;
+    width: 10vw;
+    max-width: 40px;
+    z-index: 200;
+    display: none;
+}
+
+.iitg-logo img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    display: block;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 769px) {
+    .iitg-logo {
+        right: 90%;
+    }
+}
+
+
+/* ====== MAIN LOGO ===== */
+.main-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 5vw;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.main-logos.dimmed {
+    opacity: 0.2;
+}
+
+.main-logos img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .main-logos {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+.logo1, .logo2 {
+    flex: 1;
+    text-align: center;
+}
+
+.logo2-heading {
+    color: darkslategrey;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.logo2-subheading {
+    color: darkslategrey;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 769px) {
+.logo2-heading {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo2-subheading {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+}
+}
+
+/* ====== LAVA TITLE ===== */
+.lava-title {
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    color: darkcyan;
+    -webkit-text-stroke-width: .4px;
+    -webkit-text-stroke-color: goldenrod;
+      font-weight: bold;
+    font-size: 7rem;
+}
+
+@media screen and (max-width: 768px) {
+    .lava-title {
+        font-size: 3rem;
+        -webkit-text-stroke-width: .15px; /* Thinner stroke for small screens */
+    }
+}
+
+
+/* ====== TOGGLE MENU BUTTON ===== */
+.menu-toggle {
+    position: fixed;
+    top: .5%;
+    right: 90%;
+    z-index:200;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: darkcyan; 
+    cursor: pointer;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: goldenrod;
+}
+@media screen and (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+}
+
+
+/* ====== FIXED FOOTER ===== */  
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), darkcyan; /* Black-to-transparent gradient on top of darkcyan */
+    color: goldenrod;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 10;
+    border-top: 2px solid goldenrod; /* Default for mobile view */
+}
+
+@media screen and (min-width: 769px) {
+    .fixed-footer {
+        border-top: 2px solid goldenrod; /* Desktop/tab view */
+    }
+}
+
+
+/* ====== SPONSOR ===== */
+.sponsor-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+    margin: 5vh auto;
+    width: 80vw;
+    max-width: 900px;
+    background: none;
+    border-radius: 0;
+}
+
+.sponsor-column {
+    flex: 1 1 40%;
+    text-align: left;
+}
+
+.sponsor-column h3 {
+    color: darkslategrey;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.sponsor-column img {
+    width: auto;
+    height: 75px;
+    object-fit: contain;
+}
+
+@media screen and (min-width: 769px) {
+    .sponsor-column {
+        text-align: left;
+    }
+    .sponsor-column h3 {
+        font-size: 2rem;
+    }
+    .sponsor-column img {
+        height: 125px;
+    }
+}
+
+
+/* ====== TOP BAR ===== */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 1rem;
+    z-index: 110;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+.top-bar.scrolled {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ====== NAV BAR ===== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    z-index: 120;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0.8rem 1rem;
+    transition: background 0.3s ease;
+}
+
+nav.scrolled {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(6px);
+}
+
+nav a {
+    color: darkslategrey; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    -webkit-text-stroke: 0.15px goldenrod;
+}
+
+nav a:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Black shadow on hover */
+}
+
+@media screen and (min-width: 769px) {
+  nav a {
+    font-size: 2rem;
+  -webkit-text-stroke: 0.25px goldenrod;
+  }
+}
+@media screen and (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav.show {
+    display: flex;
+  }
+}
+
+
+/* ====== SECTION ===== */
+section {    
+    z-index: 10;
+    scroll-margin-top: 6rem;
+    margin-bottom: calc(10vh + 3rem);
+    width: 80vw;
+    max-width: 900px;
+    height: calc(80vh - 5vh);
+    margin: 10vh auto 5vh auto;
+    box-sizing: border-box;
+    /* Background image and fading effect */
+    background: 
+                linear-gradient(
+                to bottom, 
+                rgba(240, 240, 240, 0.85) 0%, 
+                rgba(240, 240, 240, 0.95) 70%, 
+                rgba(240, 240, 240, 1) 100%
+                ),
+                url('sectionBG_1_rembg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 10px;
+    border: 1px solid goldenrod; /* Add border to section */
+    /* overflow: hidden; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-header {
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: darkslategrey; 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: goldenrod;
+    text-shadow: 1.5px 1px 1px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.section-content {
+    color: darkslategrey; 
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;  
+    text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.4); /* NEW */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.section-content a{
+    color: darkslategrey; 
+}
+
+@media screen and (min-width: 769px) {
+    .section-content {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+}
+
+.section-content::-webkit-scrollbar {
+    display: none;
+}
+
+.section-footer {
+    position: relative;          /* Keep it in flow of section */
+    display: flex;
+    justify-content: flex-end;   /* Arrows at right side */
+    gap: 0.5rem;                 /* Space between buttons */
+    padding: 1rem 2rem;
+}
+
+.scroll-arrow {
+    background: #ffffff;
+    color: darkslategrey;
+    border: 1px solid goldenrod;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    visibility: visible;          /* Ensure button is there */
+    opacity: 1;                   /* Ensure visible by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.scroll-arrow.hidden {
+    visibility: hidden;           /* Hidden but takes space */
+    opacity: 0;                   /* Fully transparent */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.section-decoration {
+    position: absolute;
+    width: 100px; /* adjust as needed */
+    height: auto;
+    z-index: 11; /* above the section background but below section content */
+}
+
+.section-decoration.top-right {
+    top: 0;
+    right: -25px; /* half of the image width to push it outside */
+    top: -25px; /* half of the image width to push it outside */
+}
+
+.section-decoration.bottom-left {
+    bottom: 0;
+    left: -25px; /* half of the image width to push it outside */
+}
+
+@media screen and (min-width: 769px) {
+    .section-decoration {
+        width: 300px; /* adjust as needed */
+    }
+
+    .section-decoration.top-right {
+        right: -250px; /* half of the image width to push it outside */
+    }
+
+    .section-decoration.bottom-left {
+        left: -250px; /* half of the image width to push it outside */
+    }
+  }
+</style>
+</head>
+<!-- ################################################ -->
+<!-- ################################################ -->
+<!-- ################################################ -->
+<body onscroll="checkScroll()">
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="background-polygon"></div>
+
+<div class="iitg-logo" id="iitgScrollLogo">
+    <a href="#home" onclick="goHome()">
+      <img src="IITG_logo1.png" alt="IITG Logo">
+    </a>
+  </div>
+
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <!-- Top bar for mobile only -->
+  <div class="top-bar" id="topBar"> </div>
+
+  <!-- Nav bar for desktop -->
+  <nav id="navbar">
+    <a href="#about" onclick="closeMenu()">About Us</a>
+    <a href="#speakers" onclick="closeMenu()">Speakers</a>
+    <a href="#program" onclick="closeMenu()">Schedule</a>
+    <a href="#registration" onclick="closeMenu()">Registration</a>
+    <a href="#accomodation" onclick="closeMenu()">Accomodation</a>
+    <a href="#venue" onclick="closeMenu()">Venue</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </nav>
+<!-- ################################################ -->
+  <div class="main-logos" id="home">
+    <div class="logo1">
+      <img src="logo_main_teal_gold.png" alt="Logo 1">
+    </div>
+    <div class="logo2">
+      <div class="logo2-heading">Summer School at IIT Guwahati</div>
+      <div class="logo2-subheading">30 June – 7 July</div>
+      <!--<img src="logo_BG_2.png" alt="Logo 2"> -->
+  <h1 class="lava-title">
+    Language And Vision<br>with AI/ML
+  </h1>
+    </div>
+  </div>
+<!-- ################################################ -->
+<section id="about">
+    <img src="robo_rembg/aboutUs_robo_listining-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
+    <img src="robo_rembg/aboutUs_robo_thinking-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
+  <div class="section-header">About the School</div>
+  <div class="section-content">
+    <p style="line-height: 1.6; text-align: justify;">
+      <strong>LAVA 2025</strong> is an intensive <strong>8-day Summer School</strong> on <strong>Artificial Intelligence (AI)</strong> and <strong>Machine Learning (ML)</strong> for <strong>Computer Vision</strong> and <strong>Language Modelling</strong>. It features <strong>expert lectures</strong>, <strong>tutorials</strong>, and <strong>hands-on sessions</strong> led by top academicians and industry experts.
+    </p>
+    <p style="line-height: 1.6; text-align: justify;">
+      In this year’s edition, we are proud to introduce <strong>Industry Interaction Sessions</strong>, offering participants valuable insights into how <strong>AI/ML</strong> is applied in real-world scenarios by leading IT companies. These sessions will help participants prepare for careers in the dynamic and rapidly evolving <strong>AI/ML</strong> field.
+    </p>
+    <p style="line-height: 1.6; text-align: justify;">
+      <strong>Whether you're an aspiring student, early-career researcher, industry professional or faculty</strong>, join <strong>LAVA 2025</strong> to elevate your skills and prepare for the dynamic future of <strong>AI/ML</strong>!</p>
+  </div>
+  <div class="section-footer">
+    <button class="scroll-arrow up">⬆</button>
+    <button class="scroll-arrow down">⬇</button>
+  </div>
+</section>
+<!-- ################################################ -->
+  <section id="speakers">
+    <img src="robo_rembg/speaker_robo_givingTalk-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
+    <img src="robo_rembg/speaker_robo_givingLecture-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
+    <div class="section-header">Our Speakers</div>
+  <div class="section-content">
+  <p style="line-height: 1.6; text-align: justify;">
+    Our distinguished speakers for LAVA 2025 will include leading researchers and industry experts from top academic institutions and renowned technology companies. They will share their insights on cutting-edge developments in Artificial Intelligence and Machine Learning.
+  </p>
+  <p style="line-height: 1.6; text-align: justify;">
+    Stay tuned for the announcement of our speaker lineup.
+  </p>
+  <p>
+    <strong>Coming Soon!!!</strong>
+  </p>
+</div>
+  <div class="section-footer">
+    <button class="scroll-arrow up">⬆</button>
+    <button class="scroll-arrow down">⬇</button>
+  </div>
+  </section>
+<!-- ################################################ -->
+  <section id="program">
+    <img src="robo_rembg/schedule_robo_reading-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
+    <img src="robo_rembg/schedule_robo_writing-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
+    <div class="section-header">Program Schedule</div>
+    <div class="section-content">
+        <p style="font-weight: bold; text-align: center; color: goldenrod;">
+            Detailed Programme Schedule Coming Soon!
+        </p>
+        <ul style="list-style-type: none; padding-left: 10%; line-height: 1.7;">
+            <li><strong>Day 1:</strong> Fundamentals of AI</li>
+            <li><strong>Day 2:</strong> Machine Learning Basics</li>
+            <li><strong>Day 3:</strong> Deep Neural Networks</li>
+            <li><strong>Day 4:</strong> AI/ML for Vision Modelling</li>
+            <li><strong>Day 5:</strong> AI/ML for Language Modelling</li>
+            <li><strong>Day 6:</strong> Generative AI</li>
+            <li><strong>Day 7:</strong> Explainable and Trustworthy AI</li>
+            <li><strong>Day 8:</strong> AI for Networks and Security</li>
+        </ul>
+        <p style="text-align: center; font-style: italic; margin-top: 1rem;">
+            Each day tentatively includes:<br>
+            <strong>1 hr Expert talk/ Industry Interaction Session, 3 hrs Tutorials, 2 hrs Hands-on Labs</strong>
+        </p>
+    </div>
+    <div class="section-footer">
+        <button class="scroll-arrow up">⬆</button>
+        <button class="scroll-arrow down">⬇</button>
+    </div>
+
+  </section>
+
+<!-- ################################################ -->
+  <section id="registration">
+    <img src="robo_rembg/registration_robo_wearingIDcard-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
+    <img src="robo_rembg/registration_robo_havingCertificate-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
+    <div class="section-header">Registration</div>
+  <div class="section-content">
+    <p><strong>Registration Fee:</strong> ₹3,000 INR</p>
+    <p><strong>Deadline:</strong> 27th June, 2025, 11:59pm</p>
+    <p><strong>Bank Details:</strong></p>
+    <ul style="list-style-type: none; padding-left: 1rem;">
+      <li><strong>Bank Name:</strong> Canara Bank</li>
+      <li><strong>Account Number:</strong> 8652101030401</li>
+      <li><strong>IFSC Code:</strong> CNRB0008652</li>
+      <li><strong>Branch Name:</strong> IIT Guwahati</li>
+      <li><strong>Beneficiary Name:</strong> IITG TIDF</li>
+    </ul>
+    <p style="margin-top: 1rem; ">
+      Please fill out the <a href="https://forms.gle/eVNJszkTixc2LUL18" target="_blank" style="font-weight:bold; text-decoration:underline;">registration form</a> after making the Payment.
+    </p>
+  </div>
+  <div class="section-footer">
+    <button class="scroll-arrow up">⬆</button>
+    <button class="scroll-arrow down">⬇</button>
+  </div>
+  </section>
+
+<!-- ################################################ -->
+  <section id="accomodation">
+    <img src="robo_rembg/accomodation_robo_relaxing-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
+    <img src="robo_rembg/accomodation_robo_sleeping-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
+    <div class="section-header">Accomodation</div>
+<div class="section-content">
+  <p style="text-align: justify;">
+    A limited number of hostel rooms are reserved for participants from <strong>29th June to 8th July</strong> on a first-come-first-served basis. If you require accommodation, please select the appropriate option in the registration form. Further details will be communicated closer to the event.
+  </p>
+  <p style="text-align: justify;">
+    <strong>Room Details:</strong> Shared 2/3-seater rooms at approximately ₹200 per day. Charges apply for the entire duration of stay, including arrival and departure days. An additional ₹50–₹100 per day are required for renting bedding and accessories. Participants are advised to bring their own bedsheets and mosquito nets.
+  </p>
+  <p style="text-align: justify;">
+    <strong>Dining Options:</strong> Participants may dine at any open hostel mess or campus canteen. Messes provide breakfast, lunch, and dinner at ₹60–₹80 per meal (vegetarian). Non-vegetarian options incur additional charges. Canteens offer extended hours and a wider menu but are limited in number.
+  </p>
+  <p style="color: red; text-align: justify;">
+    <strong>Important:</strong> Once you have checked in to the campus, leaving the premises will not be permitted without prior approval from the coordinators.
+  </p>
+</div>
+  <div class="section-footer">
+    <button class="scroll-arrow up">⬆</button>
+    <button class="scroll-arrow down">⬇</button>
+  </div>
+  </section>
+
+<!-- ################################################ -->
+  <section id="venue">
+    <img src="robo_rembg/venue_robo_inClass-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
+    <img src="robo_rembg/venue_robo_walkingToClass-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
+    <div class="section-header">Venue</div>
+  <div class="section-content">
+    <p style="text-align: center; font-weight: bold;">
+      Department of Computer Science and Engineering,<br>
+      H-Block Academic Complex,<br>
+      Indian Institute of Technology Guwahati,<br>
+      Guwahati – 781039
+    </p>
+    <div style="text-align: center; margin: 1rem 0;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d223.76871808644458!2d91.69211707077915!3d26.186934199400866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5ac316c90181%3A0xf3aadbcc83594f64!2sDepartment%20of%20Computer%20Science%20Engineering%2C%20NAC%20Eastern%20Corridor%2C%20IIT%20Guwahati%2C%20Guwahati%2C%20Assam%20781039!5e0!3m2!1sen!2sin!4v1748370397531!5m2!1sen!2sin" width=100% height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+  <div class="section-footer">
+    <button class="scroll-arrow up">⬆</button>
+    <button class="scroll-arrow down">⬇</button>
+  </div>
+  </section>
+
+<!-- ################################################ -->
+  <section id="contact" >
+    <img src="robo_rembg/contact_robo_whatsapping-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
+    <img src="robo_rembg/contact_robo_emailing-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
+    <div class="section-header">Contact Us</div>
+  <div class="section-content">
+    <p>
+      <strong>Coordinator:</strong><br>
+      Prof. Arijit Sur<br>
+      Department of Computer Science and Engineering,<br> 
+      IIT Guwahati<br>
+      <!-- Contact: <a href="tel:+919678000387">+91-9678000387</a> (Available 7pm – 8pm) -->
+    </p>
+
+    <p>
+      <strong>Email:</strong><br>
+      <a href="mailto:suklav@iitg.ac.in">suklav@iitg.ac.in</a> | 
+      <a href="mailto:p.alik@iitg.ac.in">p.alik@iitg.ac.in</a> | 
+      <a href="mailto:arijit@iitg.ac.in">ssoor@rnd.iitg.ac.in</a>
+    </p>
+
+    <p>
+      <strong>Whatsapp:</strong><br>
+      +91 7872446997  | 
+      +91 8944945199  | 
+      +91 6297669108
+    </p>
+
+  </div>
+  <div class="section-footer">
+    <button class="scroll-arrow up">⬆</button>
+    <button class="scroll-arrow down">⬇</button>
+  </div>
+</section>
+<!-- ################################################ -->
+<div class="sponsor-wrapper">
+  <div class="sponsor-column">
+    <h3>Organised by:</h3>
+    <img src="mmlab_logo-removebg.png" alt="MMLab Logo">
+  </div>
+  <div class="sponsor-column">
+    <h3>Supported by:</h3>
+    <img src="tidf_logo-removebg.png" alt="TIDF Logo">
+  </div>
+</div>
+
+
+<!-- ################################################ -->
+  <div class="fixed-footer">
+    LAVA 2025 &nbsp&nbsp | &nbsp&nbsp IIT Guwahati &nbsp&nbsp | &nbsp&nbsp 30 June – 7 July 2025
+  </div>
+<!-- ################################################ -->
+<!-- ################################################ -->
+<!-- ################################################ -->
+
+<script>
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      const sectionHeight = targetEl.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const offset = (sectionHeight < viewportHeight) ? ((viewportHeight - sectionHeight) / 2) : viewportHeight * 0.1;
+
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+    closeMenu();
+  });
+});
+
+
+  let scrollPosition = 0;
+
+  function toggleMenu() {
+    const nav = document.getElementById('navbar');
+    const overlay = document.getElementById('overlay');
+    const mainLogos = document.querySelector('.main-logos');
+    const show = nav.classList.toggle('show');
+    overlay.style.pointerEvents = show ? 'auto' : 'none';
+    overlay.style.display = show ? 'block' : 'none';
+    mainLogos.classList.toggle('dimmed', show);
+
+    if (show) {
+      scrollPosition = window.scrollY;
+      document.body.classList.add('menu-open');
+      document.body.style.top = `-${scrollPosition}px`;
+    } else {
+      document.body.classList.remove('menu-open');
+      document.body.style.top = '';
+      window.scrollTo(0, scrollPosition);
+    }
+  }
+
+  function closeMenu() {
+    document.getElementById('navbar').classList.remove('show');
+    document.getElementById('overlay').style.display = 'none';
+    document.querySelector('.main-logos').classList.remove('dimmed');
+    checkScroll();
+  }
+
+function checkScroll() {
+  const topBar = document.getElementById('topBar');
+  const navBar = document.getElementById('navbar');
+  const scrollLogo = document.getElementById('iitgScrollLogo');
+
+    if (window.scrollY > 10) {
+      topBar?.classList.add('scrolled');
+      navBar?.classList.add('scrolled');
+      scrollLogo.style.display = 'block';
+    } else {
+      topBar?.classList.remove('scrolled');
+      navBar?.classList.remove('scrolled');
+      scrollLogo.style.display = 'none';
+    }
+
+}
+
+  function goHome() {
+    closeMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  window.addEventListener('scroll', checkScroll);
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('section').forEach(section => {
+    const content = section.querySelector('.section-content');
+    const footer = section.querySelector('.section-footer');
+    const upBtn = footer?.querySelector('.scroll-arrow.up');
+    const downBtn = footer?.querySelector('.scroll-arrow.down');
+
+    // Initially hide both with hidden class
+    upBtn.classList.add('hidden');
+    downBtn.classList.add('hidden');
+
+    if (content.scrollHeight > content.clientHeight) {
+      downBtn.classList.remove('hidden'); // Show down arrow initially
+    }
+
+    downBtn?.addEventListener('click', () => {
+      content.scrollBy({ top: 100, behavior: 'smooth' });
+    });
+
+    upBtn?.addEventListener('click', () => {
+      content.scrollBy({ top: -100, behavior: 'smooth' });
+    });
+
+    content.addEventListener('scroll', () => {
+      const atTop = content.scrollTop <= 0;
+      const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 1;
+
+      upBtn.classList.toggle('hidden', atTop);
+      downBtn.classList.toggle('hidden', atBottom);
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>
