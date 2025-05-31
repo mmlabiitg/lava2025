@@ -19,7 +19,7 @@ html, body {
     background-size: cover;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1280px) {
     html, body {
         background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('bg2.jpg') no-repeat center bottom fixed;
         background-size: cover;
@@ -61,7 +61,7 @@ html, body {
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.2), rgba(0,0,0,0));
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1281px) {
     .background-polygon {
         display:none;
     }
@@ -87,7 +87,7 @@ html, body {
     border-radius: 5px;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1281px) {
     .iitg-logo {
         right: 90%;
     }
@@ -111,69 +111,104 @@ html, body {
     opacity: 0.2;
 }
 
-.main-logos img {
-    max-width: 100%;
-    max-height: 80vh;
+.logoimg-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the two images horizontally */
+    flex: 1;
+    max-width: 80%; 
+    margin-top: -10%; 
+}
+
+.logoimg {
+    width: 65%;
+}
+.logoname {
+    width: 40%;
+}
+
+.logoimg img, .logoname img {
+    width: 100%; /* Makes both images fill the container width */
+    height: auto;
     object-fit: contain;
 }
 
-@media screen and (max-width: 768px) {
-  .main-logos {
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-  }
+@media screen and (max-width: 1280px) {
+    .logoimg-group {
+          max-width: 100%; 
+          margin-top: 0%; 
+    }
+    .logoimg {
+        width: 40%;
+    }
+    .logoname {
+        width: 30%;
+    }
+    .main-logos {
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
 }
 
-.logo1, .logo2 {
+@media screen and (max-width: 768px) {
+    .logoimg-group {
+          margin-top: 0%; 
+    }
+    .logoimg {
+        width: 80%;
+    }
+    .logoname {
+        width: 50%;
+    }
+}
+
+.logotext {
     flex: 1;
     text-align: center;
 }
 
-.logo2-heading {
+.logotext-heading {
     color: darkslategrey;
     font-size: 2rem;
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
 
-.logo2-subheading {
+.logotext-subheading {
     color: darkslategrey;
     font-size: 1.5rem;
     margin-bottom: 1.2rem;
     font-weight: bold;
 }
 
-@media screen and (min-width: 769px) {
-.logo2-heading {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+@media screen and (min-width: 1281px) {
+    .logotext-heading {
+        font-size: 3rem;
+    }
+
+    .logotext-subheading {
+        font-size: 2rem;
+    }
 }
 
-.logo2-subheading {
-    font-size: 2rem;
-    margin-bottom: 1.2rem;
-}
-}
-
-/* ====== LAVA TITLE ===== */
 .lava-title {
     font-weight: bold;
     line-height: 1.2;
     text-align: center;
-    color: darkcyan;
-    -webkit-text-stroke-width: .4px;
+    color: rgb(5, 97, 117);
+    -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: goldenrod;
-      font-weight: bold;
     font-size: 7rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1280px) {
     .lava-title {
         font-size: 3rem;
-        -webkit-text-stroke-width: .15px; /* Thinner stroke for small screens */
+        -webkit-text-stroke-width: .4px;
     }
 }
+
 
 
 /* ====== TOGGLE MENU BUTTON ===== */
@@ -190,7 +225,7 @@ html, body {
     -webkit-text-stroke-width: .5px;
     -webkit-text-stroke-color: goldenrod;
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1281px) {
     .menu-toggle {
         display: none;
     }
@@ -212,7 +247,7 @@ html, body {
     border-top: 2px solid goldenrod; /* Default for mobile view */
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1281px) {
     .fixed-footer {
         border-top: 2px solid goldenrod; /* Desktop/tab view */
     }
@@ -250,7 +285,7 @@ html, body {
     object-fit: contain;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1281px) {
     .sponsor-column {
         text-align: left;
     }
@@ -318,13 +353,13 @@ nav a:hover {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Black shadow on hover */
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1281px) {
   nav a {
-    font-size: 2rem;
+    font-size: 1.8rem;
   -webkit-text-stroke: 0.25px goldenrod;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1280px) {
   nav {
     display: none;
     flex-direction: column;
@@ -395,7 +430,7 @@ section {
     color: darkslategrey; 
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1281px) {
     .section-content {
         font-weight: bold;
         font-size: 1.5rem;
@@ -439,33 +474,32 @@ section {
 
 .section-decoration {
     position: absolute;
-    width: 100px; /* adjust as needed */
+    width: 20%; /* adjust as needed */
     height: auto;
     z-index: 11; /* above the section background but below section content */
 }
 
 .section-decoration.top-right {
     top: 0;
-    right: -25px; /* half of the image width to push it outside */
-    top: -25px; /* half of the image width to push it outside */
+    right: -10%; /* half of the image width to push it outside */
 }
 
 .section-decoration.bottom-left {
     bottom: 0;
-    left: -25px; /* half of the image width to push it outside */
+    left: -10%; /* half of the image width to push it outside */
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1281px) {
     .section-decoration {
-        width: 300px; /* adjust as needed */
+        width: 30%; /* adjust as needed */
     }
 
     .section-decoration.top-right {
-        right: -250px; /* half of the image width to push it outside */
+        right: -20%; /* half of the image width to push it outside */
     }
 
     .section-decoration.bottom-left {
-        left: -250px; /* half of the image width to push it outside */
+        left: -20%; /* half of the image width to push it outside */
     }
   }
 </style>
@@ -500,19 +534,23 @@ section {
     <a href="#contact" onclick="closeMenu()">Contact</a>
   </nav>
 <!-- ################################################ -->
-  <div class="main-logos" id="home">
-    <div class="logo1">
-      <img src="logo_main_teal_gold.png" alt="Logo 1">
+<div class="main-logos" id="home">
+    <div class="logoimg-group">
+        <div class="logoimg">
+            <img src="logo_main_teal_gold.png" alt="Main Logo">
+        </div>
+        <div class="logoname">
+            <img src="lava2025_removebg.png" alt="LAVA2025 Logo">
+        </div>
     </div>
-    <div class="logo2">
-      <div class="logo2-heading">Summer School at IIT Guwahati</div>
-      <div class="logo2-subheading">30 June – 7 July</div>
-      <!--<img src="logo_BG_2.png" alt="Logo 2"> -->
-  <h1 class="lava-title">
-    Language And Vision<br>with AI/ML
-  </h1>
+    <div class="logotext">
+        <div class="logotext-heading">Summer School at IIT Guwahati</div>
+        <div class="logotext-subheading">30 June – 7 July</div>
+        <h1 class="lava-title">
+            Language And Vision<br>with AI/ML
+        </h1>
     </div>
-  </div>
+</div>
 <!-- ################################################ -->
 <section id="about">
     <img src="robo_rembg/aboutUs_robo_listining-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
@@ -649,7 +687,7 @@ section {
       Guwahati – 781039
     </p>
     <div style="text-align: center; margin: 1rem 0;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d223.76871808644458!2d91.69211707077915!3d26.186934199400866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5ac316c90181%3A0xf3aadbcc83594f64!2sDepartment%20of%20Computer%20Science%20Engineering%2C%20NAC%20Eastern%20Corridor%2C%20IIT%20Guwahati%2C%20Guwahati%2C%20Assam%20781039!5e0!3m2!1sen!2sin!4v1748370397531!5m2!1sen!2sin" width=100% height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d223.108071808644458!2d91.69211707077915!3d26.186934199400866!2m3!1f0!2f0!3f0!3m2!1i1024!2i1280!4f13.1!3m3!1m2!1s0x375a5ac316c90181%3A0xf3aadbcc83594f64!2sDepartment%20of%20Computer%20Science%20Engineering%2C%20NAC%20Eastern%20Corridor%2C%20IIT%20Guwahati%2C%20Guwahati%2C%20Assam%20781039!5e0!3m2!1sen!2sin!4v1748370397531!5m2!1sen!2sin" width=100% height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
   <div class="section-footer">
