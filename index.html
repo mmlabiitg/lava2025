@@ -177,8 +177,8 @@ html, body {
 
 .logotext-subheading {
     color: darkslategrey;
-    font-size: 1.5rem;
-    margin-bottom: 3.5rem;
+    font-size: 1.2rem;
+    margin-bottom: .5em;
     font-weight: bold;
 }
 
@@ -694,6 +694,7 @@ section {
 }
 
 </style>
+
 </head>
 <!-- ################################################ -->
 <!-- ################################################ -->
@@ -719,11 +720,12 @@ section {
     <a href="#about" onclick="closeMenu()">About Us</a>
     <a href="#speakers" onclick="closeMenu()">Speakers</a>
     <a href="#program" onclick="closeMenu()">Schedule</a>
-    <a href="#registration" onclick="closeMenu()">Registration</a>
+    <a href="#registration" onclick="closeMenu()">Registration <span id="registrationRemaining" style="font-size:.75em; color:#cc0000"><br>--D --H --M left</span></a>
     <a href="#accomodation" onclick="closeMenu()">Accomodation</a>
     <a href="#venue" onclick="closeMenu()">Venue</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
   </nav>
+
 <!-- ################################################ -->
 <div class="main-logos" id="home">
     <div class="logoimg-group">
@@ -756,7 +758,6 @@ section {
           </div>
         </div>
     </div>
-
 </div>
 <!-- ################################################ -->
 <section id="about">
@@ -1239,7 +1240,7 @@ section {
     <img src="robo_rembg/registration_robo_wearingIDcard-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
     <img src="robo_rembg/registration_robo_havingCertificate-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
     <div class="section-header">Registration</div>
-  <div class="section-content"  style="padding-left: 10%;">
+  <div class="section-content"  id="registrationContent" style="padding-left: 10%;">
     <p><strong>Registration Fee:</strong> ₹3,000 INR</p>
     <p><strong>Deadline:</strong> 27th June, 2025, 11:59pm</p>
     <p><strong>Bank Details:</strong></p>
@@ -1360,8 +1361,73 @@ section {
     LAVA 2025 &nbsp&nbsp | &nbsp&nbsp IIT Guwahati &nbsp&nbsp | &nbsp&nbsp 30 June – 7 July 2025
   </div>
 <!-- ################################################ -->
+<!-- Registration Modal -->
+  <!-- <div id="registrationModal" class="modal">
+    <div class="modal-content">
+      <h3>Registration ends in</h3>
+      <div id="countdown-timer" class="countdown-text"></div>
+
+      <a id="registerBtn"
+        class="btn btn-primary btn-xl text-uppercase register-button"
+        href="https://forms.gle/eVNJszkTixc2LUL18"
+        target="_blank">
+        Register Now
+      </a>
+    </div>
+  </div> -->
+
+
+
 <!-- ################################################ -->
 <!-- ################################################ -->
+<!-- ################################################ -->
+
+
+<script>
+/* --------------- CONFIG --------------- */
+const DEADLINE = new Date("2025-06-27T23:59:59+05:30");  // 11:59 PM IST
+/* -------------------------------------- */
+
+window.addEventListener("load", () => {
+  const span        = document.getElementById("registrationRemaining");
+  const regContent  = document.getElementById("registrationContent");
+
+  updateCountdown();                  // run once at load
+  setInterval(updateCountdown, 60000); // then every minute
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = DEADLINE - now;
+
+    /* ----- If deadline passed ----- */
+    if (diff <= 0) {
+      if (span) span.innerHTML = "";   // clear the small timer
+      if (regContent) {
+        regContent.innerHTML = `
+          <p style="font-size:1.5rem;
+                    font-weight:bold;
+                    color:crimson;
+                    margin-top:1rem;">
+            Registration is now closed.
+          </p>`;
+      }
+      return;                          // stop formatting countdown
+    }
+
+    /* ----- Build remaining time string ----- */
+    const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hrs   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins  = Math.floor((diff / (1000 * 60)) % 60);
+
+    const parts = [];
+    if (days  > 0) parts.push(`${days}D`);
+    if (hrs   > 0 || days > 0) parts.push(`${hrs}H`);
+    parts.push(`${mins}M`);
+
+    if (span) span.innerHTML = `<br>${parts.join(" ")} left`;
+  }
+});
+</script>
 
 <script>
 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
@@ -1468,6 +1534,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 </script>
 
