@@ -611,33 +611,86 @@ section {
 }
 
 /* Container for the news feed Text to scroll */
-.news-feed-container {
-  bottom: 10%;
-  width: 90%;
-  overflow: hidden; /* Hide overflow content */
+.announcements-container-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  height: 90px;
+  overflow: visible;
+  background: transparent;
+  margin: 3rem auto 1rem auto;
   position: relative;
-  height: 75px; /* Adjust height as needed */
-  background-color: transparent; /* Background color for the feed area */
-  margin: 0 auto; /* Center horizontally if needed */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid goldenrod;
+  border-top: none; /* we will create custom top border with label */
+}
+
+/* Label floating over the top border */
+.announcements-container-wrapper::before {
+  content: "ANNOUNCEMENTS";
+  position: absolute;
+  top: -0.9rem;                 /* slightly above top border */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff8dc;          /* faded yellow background */
+  color: goldenrod;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 0.25rem 1rem;
+  border: 1px solid goldenrod;
+  border-radius: 5px;
+  z-index: 2;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+
+/* Custom decorative top border */
+.announcements-container-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-top: 2px solid goldenrod;
+  z-index: 1;
+}
+
+.announcements-container {
+  width: 100%;
+  max-width: 1000px;
+  height: 90px;
+  overflow: hidden;
+  background: transparent;
+  margin: 3rem auto 1rem auto;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-top: none; /* we will create custom top border with label */
+}
+
+.news-vertical-list {
   display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  animation: scroll-up 15s linear infinite;
 }
 
-.news-text {
-  display: inline-block;
-  color: red; /* Text color */
-  white-space: nowrap; /* Prevent line breaks */
-  position: absolute; /* Position absolutely for animation */
-  font-size: 1.65em; /* Adjust font size as needed */
-  animation: scroll-left 30s linear infinite; /* Animation properties */
+.news-vertical-list li {
+  padding: 0.5rem .5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #cc0000;
+  background-color: transparent;
+  box-sizing: border-box;
+  border-bottom: 1px dotted #ccc;
+  text-align: left;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(100%); /* Start off-screen to the right */
-  }
-  100% {
-    transform: translateX(-100%); /* Move completely to the left */
-  }
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); } /* Move up half the height (due to duplicated list) */
 }
 
 </style>
@@ -687,20 +740,24 @@ section {
         <h1 class="lava-title">
             Language And Vision<br>with AI/ML
         </h1>
+        <div class="announcements-container-wrapper">
+          <div class="announcements-container">
+            <ul class="news-vertical-list">
+              <li>📌 Only paying the fee is not enough — candidates must fill the registration form to complete the registration process.</li>
+              <li>📌 If you opted for accommodation, your stay is confirmed and details will be sent by 28th June.</li>  
+              <!-- Hostel fee must be paid before arrival. -->
+              <li>📌 Class links will be shared with registered email IDs of online participants.</li>
+              <!-- repeat -->
+              <li>📌 Only paying the fee is not enough — candidates must fill the registration form to complete the registration process.</li>
+              <li>📌 If you opted for accommodation, your stay is confirmed and details will be sent by 28th June.</li>  
+              <!-- Hostel fee must be paid before arrival. -->
+              <li>📌 Class links will be shared with registered email IDs of online participants.</li>
+            </ul>
+          </div>
+        </div>
     </div>
 
-    <br/>
 </div>
-  <div class="news-feed-container">
-    <div class="news-text">
-      <span>
-      <b><i>Only paying the fee is not enough — candidates must fill the registration form to complete the registration process. &nbsp;•&nbsp;
-        If you get registration confirmation mail and opted for accommodation, your accommodation is also confirmed.  &nbsp;•&nbsp;
-        The details of your accommodation will be sent to you by 28th June. &nbsp;•&nbsp;
-      </i></b>
-      </span>
-    </div>
-  </div>
 <!-- ################################################ -->
 <section id="about">
     <img src="robo_rembg/aboutUs_robo_listining-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
