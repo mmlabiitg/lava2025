@@ -237,28 +237,6 @@ html, body {
 }
 
 
-/* ====== FIXED FOOTER ===== */  
-.fixed-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), darkcyan; /* Black-to-transparent gradient on top of darkcyan */
-    color: goldenrod;
-    text-align: center;
-    padding: 0.5rem 0;
-    font-weight: bold;
-    font-size: 1rem;
-    z-index: 10;
-    border-top: 2px solid goldenrod; /* Default for mobile view */
-}
-
-@media screen and (min-width: 1281px) {
-    .fixed-footer {
-        border-top: 2px solid goldenrod; /* Desktop/tab view */
-    }
-}
-
-
 /* ====== SPONSOR ===== */
 .sponsor-wrapper {
     display: flex;
@@ -610,6 +588,58 @@ section {
     }
 }
 
+
+/* ====== FIXED FOOTER ===== */  
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), darkcyan; /* Black-to-transparent gradient on top of darkcyan */
+    color: goldenrod;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 10;
+    border-top: 2px solid goldenrod; /* Default for mobile view */
+}
+
+@media screen and (min-width: 1281px) {
+    .fixed-footer {
+        border-top: 2px solid goldenrod; /* Desktop/tab view */
+    }
+}
+
+/* Container for the news feed Text to scroll */
+.news-feed-container {
+  bottom: 10%;
+  width: 90%;
+  overflow: hidden; /* Hide overflow content */
+  position: relative;
+  height: 75px; /* Adjust height as needed */
+  background-color: transparent; /* Background color for the feed area */
+  margin: 0 auto; /* Center horizontally if needed */
+  display: flex;
+}
+
+.news-text {
+  display: inline-block;
+  color: red; /* Text color */
+  white-space: nowrap; /* Prevent line breaks */
+  position: absolute; /* Position absolutely for animation */
+  font-size: 1.65em; /* Adjust font size as needed */
+  animation: scroll-left 30s linear infinite; /* Animation properties */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+  }
+  100% {
+    transform: translateX(-100%); /* Move completely to the left */
+  }
+}
+
 </style>
 </head>
 <!-- ################################################ -->
@@ -658,7 +688,19 @@ section {
             Language And Vision<br>with AI/ML
         </h1>
     </div>
+
+    <br/>
 </div>
+  <div class="news-feed-container">
+    <div class="news-text">
+      <span>
+      <b><i>Only paying the fee is not enough — candidates must fill the registration form to complete the registration process. &nbsp;•&nbsp;
+        If you get registration confirmation mail and opted for accommodation, your accommodation is also confirmed.  &nbsp;•&nbsp;
+        The details of your accommodation will be sent to you by 28th June. &nbsp;•&nbsp;
+      </i></b>
+      </span>
+    </div>
+  </div>
 <!-- ################################################ -->
 <section id="about">
     <img src="robo_rembg/aboutUs_robo_listining-removebg-preview.png" class="section-decoration top-right" alt="Decoration Top Right">
@@ -745,7 +787,8 @@ section {
         <img src="speakers_rembg/Samiran-Chattopadhyay-2-removebg-preview.png" alt="Prof. Samiran Chattopadhyay">
       </div>
       <h3>Prof. Samiran Chattopadhyay</h3>
-      <p>Vice-Chancellor, Techno India University</p>
+      <p>Retd. Professor, Jadavpur University</p>
+      <!-- <p>Vice-Chancellor, Techno India University</p> -->
     </div>
     <div class="hover-overlay">
         <div class="bio-text">
@@ -769,6 +812,89 @@ section {
   <div class="speaker-card">
     <div class="speaker-inner">
       <div class="speaker-image">
+        <img src="speakers_rembg/microsoft_research_sq_logo-removebg-preview.png" alt="Microsoft Research Lab">
+      </div>
+      <h3>Microsoft Research Lab - India</h3>
+      <!-- <p>Microsoft</p> -->
+    </div>
+    <div class="hover-overlay">
+        <div class="bio-text">
+        <strong>Microsoft Research Lab – India</strong> is a leading research center of Microsoft that focuses on cutting-edge innovations in areas such as machine learning, natural language processing, systems, and socio-technical computing. Situated in Bengaluru, the lab works at the intersection of advanced research and real-world impact, contributing to both global scientific progress and technology solutions tailored for emerging markets like India.
+       </div>
+        <div class="hover-links">
+          <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/" target="_blank">
+            <img src="website-icon-removebg-preview.png" alt="Website">
+          </a>
+        </div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="speaker-inner">
+      <div class="speaker-image">
+        <img src="speakers_rembg/TCS_Logo-removebg-preview.png" alt="TCS Innovation Labs">
+      </div>
+      <h3>TCS Innovation Labs</h3>
+      <!-- <p>Microsoft</p> -->
+    </div>
+    <div class="hover-overlay">
+        <div class="bio-text">
+        <strong>TCS Innovation Labs</strong>, the research and innovation arm of Tata Consultancy Services, plays a pivotal role in advancing deep-tech capabilities across industries. With a strong focus on AI, IoT, quantum computing, sustainability, and business innovation, the Labs drive transformative solutions that shape the future of digital ecosystems and deliver strategic value to global enterprises.
+       </div>
+        <div class="hover-links">
+          <a href="https://www.tcs.com/what-we-do/research" target="_blank">
+            <img src="website-icon-removebg-preview.png" alt="Website">
+          </a>
+        </div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="speaker-inner">
+      <div class="speaker-image">
+        <img src="speakers_rembg/samsung_research_logo-removebg-preview.png" alt="Samsung Research">
+      </div>
+      <h3>Samsung R&D Institute India</h3>
+      <!-- <p>Microsoft</p> -->
+    </div>
+    <div class="hover-overlay">
+        <div class="bio-text">
+        <strong>Samsung R&D Institute India</strong> is the largest R&D Center outside of South Korea and a key innovation hub in the Samsung group, with the specific purpose  to create USPs for global flagship devices with by creating significant advancements in Modem, Multimedia, AI, Internet of Things, and to make for India by catering to the specific needs of Indian consumers. 
+       </div>
+        <div class="hover-links">
+          <a href="https://research.samsung.com/sri-b#none" target="_blank">
+            <img src="website-icon-removebg-preview.png" alt="Website">
+          </a>
+        </div>
+    </div>
+  </div>
+
+  <!-- <div class="speaker-card">
+    <div class="speaker-inner">
+      <div class="speaker-image">
+        <img src="speakers_rembg/nidhi_tiwari_L-removebg-preview.png" alt="Nidhi Tiwari">
+      </div>
+      <h3>Dr. Nidhi Tiwari</h3>
+      <p>Microsoft</p>
+    </div>
+    <div class="hover-overlay">
+        <div class="bio-text">
+        <strong>Dr. Nidhi Tiwari</strong> holds a <strong>Ph.D. in Distributed Computing</strong> from the <strong>IITB Monash Research Academy</strong>. She is currently a <strong>Principal Applied Scientist</strong> at <strong>Microsoft</strong>, with over two decades of experience in machine learning, software engineering, and performance analytics, including leadership roles at Microsoft, FICO, and Infosys. Her work spans applied research, cloud solutions, and AI-driven innovations for enterprise-scale impact.
+       </div>
+        <div class="hover-links">
+          <a href="https://www.linkedin.com/in/dr-nidhi-tiwari-105b1130/?originalSubdomain=in" target="_blank">
+            <img src="linkedin-icon-removebg-preview.png" alt="LinkedIn">
+          </a>
+          <a href="https://scholar.google.co.in/citations?user=8A9PDrYAAAAJ&hl=en" target="_blank">
+            <img src="scholar-icon-removebg-preview.png" alt="Google Scholar">
+          </a>
+        </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="speaker-card">
+    <div class="speaker-inner">
+      <div class="speaker-image">
         <img src="speakers_rembg/Arijit-Ukil-removebg-preview.png" alt="Arijit Ukil">
       </div>
       <h3>Dr. Arijit Ukil</h3>
@@ -776,8 +902,8 @@ section {
     </div>
     <div class="hover-overlay">
         <div class="bio-text">
-        <strong>Dr. Arijit Ukil</strong> received his M.Tech. degree from <strong>Jadavpur University</strong> and his Ph.D. degree from the <strong>University of Murcia</strong>, Spain. He is currently a <strong>Principal Scientist</strong> at <strong>Tata Consultancy Services Research</strong>, where he leads innovations in deep learning, generative AI, and data privacy. Dr. Ukil has authored over 50 research papers, contributed to multiple book chapters, and holds more than 30 granted patents across the globe.
-       </div>
+          <strong>Dr. Arijit Ukil</strong> received his M.Tech. degree from <strong>Jadavpur University</strong> and his Ph.D. degree from the <strong>University of Murcia</strong>, Spain. He is currently a <strong>Principal Scientist</strong> at <strong>Tata Consultancy Services Research</strong>, where he leads innovations in deep learning, generative AI, and data privacy. Dr. Ukil has authored over 50 research papers, contributed to multiple book chapters, and holds more than 30 granted patents across the globe.
+        </div>
         <div class="hover-links">
           <a href="https://www.linkedin.com/in/arijitukil" target="_blank">
             <img src="linkedin-icon-removebg-preview.png" alt="LinkedIn">
@@ -787,9 +913,9 @@ section {
           </a>
         </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="speaker-card">
+  <!-- <div class="speaker-card">
     <div class="speaker-inner">
       <div class="speaker-image">
         <img src="speakers_rembg/HrishikeshSharma-L-removebg-preview.png" alt="Hrishikesh Sharma">
@@ -810,7 +936,7 @@ section {
           </a>
         </div>
     </div>
-  </div>
+  </div> -->
 
 </div>
 
@@ -843,6 +969,206 @@ section {
             Each day tentatively includes:<br>
             <strong>1 hr Expert talk/ Industry Interaction Session, 3 hrs Tutorials, 2 hrs Hands-on Labs</strong>
         </p>
+        <!-- <div style="display: none;" id="responsiveTable">
+          <table style="border-collapse: collapse; text-align: center; width: 100%;">
+            <tr style="border-bottom: 1px solid black;">
+              <th></th>
+              <th>9:00 AM -<br>10:00 AM</th>
+              <th>10:00 AM -<br>11:00 AM</th>
+              <th style="writing-mode: vertical-rl; transform: rotate(180deg); vertical-align: middle;" rowspan="9">11:00 AM - 11:30 AM (High-Tea)</th>
+              <th>11:30 AM -<br>12:30 PM</th>
+              <th>12:30 PM -<br>1:30 PM</th>
+              <th style="writing-mode: vertical-rl; transform: rotate(180deg); vertical-align: middle;" rowspan="9">1:30 PM - 3:00 PM (Lunch)</th>
+              <th>3:00 PM -<br>5:00 PM</th>
+            </tr>
+            <tr style="border-bottom: 1px solid black;">
+              <td><b>6th January<br>(Monday)</b></td>
+              <td>Expert<br>Lecture</td>
+              <td style="color: lightgreen; font-weight: bold;">Inauguration</td>
+              <td>ML Basics</td>
+              <td>ML Basics</td>
+              <td>Hands-on</td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;">
+              <td><b>7th January<br>(Tuesday)</b></td>
+              <td>Expert<br>Lecture</td>
+              <td>DL Basics</td>
+              <td>CNN - I</td>
+              <td>CNN - II</td>
+              <td>Hands-on</td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;">
+              <td><b>8th January<br>(Wednesday)</b></td>
+              <td>Expert<br>Lecture</td>
+              <td>Sequential<br>Modelling - I</td>
+              <td>Sequential<br>Modelling - II</td>
+              <td>Sequential<br>Modelling - III</td>
+              <td>Hands-on</td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;">
+              <td><b>9th January<br>(Thursday)</b></td>
+              <td>Expert<br>Lecture</td>
+              <td>DL for<br>Remote Sensing</td>
+              <td>DL for<br>Thermal Imaging</td>
+              <td>Self-supervised Learning<br>for Vision</td>
+              <td>DL for Underwater <br> Vision & Hands-on</td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;">
+              <td><b>10th January<br>(Friday)</b></td>
+              <td>Expert<br>Lecture</td>
+              <td>DL for NLP - I</td>
+              <td>DL for NLP - II</td>
+              <td>DL for NLP - III</td>
+              <td>Hands-on</td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;">
+              <td><b>11th January<br>(Saturday)</b></td>
+              <td>Expert<br>Lecture</td>
+              <td>Generative AI - I</td>
+              <td>Generative AI - II</td>
+              <td>Generative AI - III</td>
+              <td>Hands-on</td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;">
+              <td><b>12th January<br>(Sunday)</b></td>
+              <td>Expert<br>Lecture</td>
+              <td>DL for<br>Network</td>
+              <td>DL for<br>Vehicular Network</td>
+              <td>DL for<br>Cyber Security</td>
+              <td>Hands-on</td>
+            </tr>
+            <tr>
+              <td><b>13th January<br>(Monday)</b></td>
+              <td>Expert<br>Lecture</td>
+              <td>Explainable AI</td>
+              <td>Fairness in AI</td>
+              <td>DL Applications</td>
+              <td style="color: orange; font-weight: bold;">Valedictory</td>
+            </tr>
+          </table>
+        </div>
+                
+                <div style="display: none;" id="responsiveTable2">
+
+                    
+                        <div class="ScheduleBanner">
+                            <h4>6th January (Monday), 2025</h4>
+                        </div>
+                      <p  class="section-subheading Home text-muted" >
+                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
+                              <b>10:00 - 11:00 AM</b><br> Inauguration<br><br>
+                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
+                              <b>11:30 AM - 12:30 PM</b><br> ML Basics - I<br><br>
+                              <b>12:30 - 1:30 PM</b><br> ML Basics - II<br><br>
+                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
+                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
+                      </p> 
+                        
+                        <div class="ScheduleBanner">
+                            <h4>7th January (Tuesday), 2025</h4>
+                        </div>
+                      <p  class="section-subheading Home text-muted" >
+                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
+                              <b>10:00 - 11:00 AM</b><br> DL Basics<br><br>
+                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
+                              <b>11:30 AM - 12:30 PM</b><br> CNN - I<br><br>
+                              <b>12:30 - 1:30 PM</b><br> CNN - II<br><br>
+                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
+                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
+                      </p>                       
+                        
+                        <div class="ScheduleBanner">
+                            <h4>8th January (Wednesday), 2025</h4>
+                        </div>
+                      <p  class="section-subheading Home text-muted" >
+                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
+                              <b>10:00 - 11:00 AM</b><br> Sequential Modelling - I<br><br>
+                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
+                              <b>11:30 AM - 12:30 PM</b><br> Sequential Modelling - II<br><br>
+                              <b>12:30 - 1:30 PM</b><br> Sequential Modelling - III<br><br>
+                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
+                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
+                      </p>    
+                        
+                        <div class="ScheduleBanner">
+                            <h4>9th January (Thursday), 2025</h4>
+                        </div>    
+                      <p  class="section-subheading Home text-muted" >
+                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
+                              <b>10:00 - 11:00 AM</b><br> DL for Remote Sensing<br><br>
+                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
+                              <b>11:30 AM - 12:30 PM</b><br> DL for Thermal Imaging<br><br>
+                              <b>12:30 - 1:30 PM</b><br> Self supervised Learning for Vision<br><br>
+                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
+                              <b>3:00 - 5:00 PM</b><br> DL for Underwater Vision <br> & Hands-on<br><br>
+                      </p>  
+                        
+                        <div class="ScheduleBanner">
+                            <h4>10th January (Friday), 2025</h4>
+                        </div>
+                        
+                      <p  class="section-subheading Home text-muted" >
+                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
+                              <b>10:00 - 11:00 AM</b><br> DL for NLP - I<br><br>
+                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
+                              <b>11:30 AM - 12:30 PM</b><br> DL for NLP - II<br><br>
+                              <b>12:30 - 1:30 PM</b><br> DL for NLP - III<br><br>
+                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
+                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
+                      </p>  
+                        
+                        <div class="ScheduleBanner">
+                            <h4>11th January (Saturday), 2025</h4>
+                        </div>
+                        
+                      <p  class="section-subheading Home text-muted" >
+                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
+                              <b>10:00 - 11:00 AM</b><br> Generative AI - I<br><br>
+                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
+                              <b>11:30 AM - 12:30 PM</b><br> Generative AI - II<br><br>
+                              <b>12:30 - 1:30 PM</b><br> Generative AI - III<br><br>
+                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
+                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
+                      </p>  
+                        
+                        <div class="ScheduleBanner">
+                            <h4>12th January (Sunday), 2025</h4>
+                        </div>
+                        
+                      <p  class="section-subheading Home text-muted" >
+                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
+                              <b>10:00 - 11:00 AM</b><br> DL for Network<br><br>
+                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
+                              <b>11:30 AM - 12:30 PM</b><br>DL for Vehicular Network<br><br>
+                              <b>12:30 - 1:30 PM</b><br> DL for Cyber Security<br><br>
+                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
+                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
+                      </p>  
+                        
+                        <div class="ScheduleBanner">
+                            <h4>13th January (Monday), 2025</h4>
+                        </div>
+                      <p  class="section-subheading Home text-muted" >
+                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
+                              <b>10:00 - 11:00 AM</b><br>Explainable AI<br><br>
+                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
+                              <b>11:30 AM - 12:30 PM</b><br>Fairness in AI<br><br>
+                              <b>12:30 - 1:30 PM</b><br> DL Applications<br><br>
+                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
+                              <b>3:00 - 5:00 PM</b><br> Valedictory<br><br>
+                      </p> 
+
+                </div> -->
+                <script>
+                  // Script to show table only if screen width is greater than 800px
+                  if (window.innerWidth > 800) {
+                    document.getElementById("responsiveTable").style.display = "block";
+                  }
+                  // Script to show table only if screen width is greater than 800px
+                  if (window.innerWidth <= 800) {
+                    document.getElementById("responsiveTable2").style.display = "block";
+                  }
+                </script>
     </div>
     <div class="section-footer">
         <button class="scroll-arrow up">⬆</button>
