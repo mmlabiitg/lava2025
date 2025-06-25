@@ -693,6 +693,63 @@ section {
   100% { transform: translateY(-50%); } /* Move up half the height (due to duplicated list) */
 }
 
+
+/* === schedule-container === */
+.schedule-container {
+  display: flex;
+  border: 2px solid #ddd;
+  margin-top: 2rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Left vertical menu */
+.schedule-nav {
+  width: 100px;
+  background-color: #f9f9f9;
+  border-right: 2px solid #ccc;
+}
+
+.schedule-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.schedule-nav li {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.schedule-nav li.active {
+  background-color: #aaaaaa;   /* golden yellow */
+  color: #000;                 /* black text */
+  font-weight: bolder;
+}
+
+.schedule-nav li:hover {
+  background-color: #cccccc;
+}
+
+/* Right schedule content */
+.schedule-content {
+  flex: 1;
+  padding: 1rem;
+  background-color: #fffef8;
+}
+
+.day {
+  display: none;
+}
+
+.day.active {
+  display: block;
+}
+
 </style>
 
 </head>
@@ -1010,7 +1067,7 @@ section {
     <img src="robo_rembg/schedule_robo_writing-removebg-preview.png" class="section-decoration bottom-left" alt="Decoration Bottom Left">
     <div class="section-header">Program Schedule</div>
     <div class="section-content">
-        <p style="font-weight: bold; text-align: center; color: goldenrod;">
+        <!-- <p style="font-weight: bold; text-align: center; color: goldenrod;">
             Detailed Programme Schedule Coming Soon!
         </p>
         <ul style="list-style-type: none; padding-left: 10%; line-height: 1.7;">
@@ -1026,197 +1083,203 @@ section {
         <p style="text-align: center; font-style: italic; margin-top: 1rem;">
             Each day tentatively includes:<br>
             <strong>1 hr Expert talk/ Industry Interaction Session, 3 hrs Tutorials, 2 hrs Hands-on Labs</strong>
-        </p>
-        <!-- <div style="display: none;" id="responsiveTable">
-          <table style="border-collapse: collapse; text-align: center; width: 100%;">
+        </p> -->
+        <div  id="responsiveTable" style="display: none;">
+          <table style="border-collapse: collapse; text-align: center; width: 100%; font-size: 0.95rem; margin-top:3em;">
             <tr style="border-bottom: 1px solid black;">
               <th></th>
-              <th>9:00 AM -<br>10:00 AM</th>
-              <th>10:00 AM -<br>11:00 AM</th>
-              <th style="writing-mode: vertical-rl; transform: rotate(180deg); vertical-align: middle;" rowspan="9">11:00 AM - 11:30 AM (High-Tea)</th>
-              <th>11:30 AM -<br>12:30 PM</th>
-              <th>12:30 PM -<br>1:30 PM</th>
-              <th style="writing-mode: vertical-rl; transform: rotate(180deg); vertical-align: middle;" rowspan="9">1:30 PM - 3:00 PM (Lunch)</th>
-              <th>3:00 PM -<br>5:00 PM</th>
+              <th>09:00 - 10:00</th>
+              <th>10:00 - 11:00</th>
+              <th style="writing-mode: vertical-rl; transform: rotate(180deg); vertical-align: middle;" rowspan="9">11:00 - 11:30 (High-Tea)</th>
+              <th>11:30 - 12:30</th>
+              <th>12:30 - 13:30</th>
+              <th style="writing-mode: vertical-rl; transform: rotate(180deg); vertical-align: middle;" rowspan="9">1:30 - 3:00 (Lunch)</th>
+              <th>15:00 - 17:00</th>
             </tr>
             <tr style="border-bottom: 1px solid black;">
-              <td><b>6th January<br>(Monday)</b></td>
-              <td>Expert<br>Lecture</td>
+              <td><b>30<sup>th</sup> June<br>(Monday)</b></td>
               <td style="color: lightgreen; font-weight: bold;">Inauguration</td>
-              <td>ML Basics</td>
-              <td>ML Basics</td>
-              <td>Hands-on</td>
+              <td>Keynote Talk</td>
+              <td>Machine Learning - I</td>
+              <td>Machine Learning - II</td>
+              <td>Hands-on I</td>
             </tr>
             <tr style="border-bottom: 1px solid black;">
-              <td><b>7th January<br>(Tuesday)</b></td>
-              <td>Expert<br>Lecture</td>
-              <td>DL Basics</td>
-              <td>CNN - I</td>
-              <td>CNN - II</td>
-              <td>Hands-on</td>
+              <td><b>1<sup>st</sup> July<br>(Tuesday)</b></td>
+              <td>Keynote Talk</td>
+              <td>Deep Learning - I</td>
+              <td>Deep Learning - II</td>
+              <td>Deep Learning - III</td>
+              <td>Hands-on II</td>
             </tr>
             <tr style="border-bottom: 1px solid black;">
-              <td><b>8th January<br>(Wednesday)</b></td>
-              <td>Expert<br>Lecture</td>
-              <td>Sequential<br>Modelling - I</td>
-              <td>Sequential<br>Modelling - II</td>
-              <td>Sequential<br>Modelling - III</td>
-              <td>Hands-on</td>
+              <td><b>2<sup>nd</sup> July<br>(Wednesday)</b></td>
+              <td>Keynote Talk</td>
+              <td>Language Modelling - I</td>
+              <td>Language Modelling - II</td>
+              <td>Language Modelling - III</td>
+              <td>Hands-on III</td>
             </tr>
             <tr style="border-bottom: 1px solid black;">
-              <td><b>9th January<br>(Thursday)</b></td>
-              <td>Expert<br>Lecture</td>
-              <td>DL for<br>Remote Sensing</td>
-              <td>DL for<br>Thermal Imaging</td>
-              <td>Self-supervised Learning<br>for Vision</td>
-              <td>DL for Underwater <br> Vision & Hands-on</td>
+              <td><b>3<sup>rd</sup> July<br>(Thursday)</b></td>
+              <td>Keynote Talk</td>
+              <td>Vision Modelling - I</td>
+              <td>Vision Modelling - II</td>
+              <td>Vision Modelling - III</td>
+              <td>Hands-on IV</td>
             </tr>
             <tr style="border-bottom: 1px solid black;">
-              <td><b>10th January<br>(Friday)</b></td>
-              <td>Expert<br>Lecture</td>
-              <td>DL for NLP - I</td>
-              <td>DL for NLP - II</td>
-              <td>DL for NLP - III</td>
-              <td>Hands-on</td>
+              <td><b>4<sup>th</sup> July<br>(Friday)</b></td>
+              <td>Keynote Talk</td>
+              <td>Vision Modelling - IV</td>
+              <td>Artificial Intelligence - I</td>
+              <td>Artificial Intelligence - II</td>
+              <td>Hands-on V</td>
             </tr>
             <tr style="border-bottom: 1px solid black;">
-              <td><b>11th January<br>(Saturday)</b></td>
-              <td>Expert<br>Lecture</td>
+              <td><b>5<sup>th</sup> July<br>(Saturday)</b></td>
+              <td>Keynote Talk</td>
               <td>Generative AI - I</td>
               <td>Generative AI - II</td>
               <td>Generative AI - III</td>
-              <td>Hands-on</td>
+              <td>Hands-on VI</td>
             </tr>
             <tr style="border-bottom: 1px solid black;">
-              <td><b>12th January<br>(Sunday)</b></td>
-              <td>Expert<br>Lecture</td>
-              <td>DL for<br>Network</td>
-              <td>DL for<br>Vehicular Network</td>
-              <td>DL for<br>Cyber Security</td>
-              <td>Hands-on</td>
+              <td><b>6<sup>th</sup> July<br>(Sunday)</b></td>
+              <td>Keynote Talk</td>
+              <td>Explainable AI - I</td>
+              <td>Explainable AI - II</td>
+              <td>Fairness in AI</td>
+              <td>Hands-on VII</td>
             </tr>
             <tr>
-              <td><b>13th January<br>(Monday)</b></td>
-              <td>Expert<br>Lecture</td>
-              <td>Explainable AI</td>
-              <td>Fairness in AI</td>
-              <td>DL Applications</td>
+              <td><b>7<sup>th</sup> July<br>(Monday)</b></td>
+              <td>Keynote Talk</td>
+              <td>AI for Security</td>
+              <td>AI for Network Security - I</td>
+              <td>AI for Network Security - II</td>
               <td style="color: orange; font-weight: bold;">Valedictory</td>
             </tr>
           </table>
         </div>
-                
-                <div style="display: none;" id="responsiveTable2">
 
-                    
-                        <div class="ScheduleBanner">
-                            <h4>6th January (Monday), 2025</h4>
-                        </div>
-                      <p  class="section-subheading Home text-muted" >
-                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
-                              <b>10:00 - 11:00 AM</b><br> Inauguration<br><br>
-                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
-                              <b>11:30 AM - 12:30 PM</b><br> ML Basics - I<br><br>
-                              <b>12:30 - 1:30 PM</b><br> ML Basics - II<br><br>
-                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
-                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
-                      </p> 
-                        
-                        <div class="ScheduleBanner">
-                            <h4>7th January (Tuesday), 2025</h4>
-                        </div>
-                      <p  class="section-subheading Home text-muted" >
-                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
-                              <b>10:00 - 11:00 AM</b><br> DL Basics<br><br>
-                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
-                              <b>11:30 AM - 12:30 PM</b><br> CNN - I<br><br>
-                              <b>12:30 - 1:30 PM</b><br> CNN - II<br><br>
-                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
-                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
-                      </p>                       
-                        
-                        <div class="ScheduleBanner">
-                            <h4>8th January (Wednesday), 2025</h4>
-                        </div>
-                      <p  class="section-subheading Home text-muted" >
-                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
-                              <b>10:00 - 11:00 AM</b><br> Sequential Modelling - I<br><br>
-                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
-                              <b>11:30 AM - 12:30 PM</b><br> Sequential Modelling - II<br><br>
-                              <b>12:30 - 1:30 PM</b><br> Sequential Modelling - III<br><br>
-                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
-                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
-                      </p>    
-                        
-                        <div class="ScheduleBanner">
-                            <h4>9th January (Thursday), 2025</h4>
-                        </div>    
-                      <p  class="section-subheading Home text-muted" >
-                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
-                              <b>10:00 - 11:00 AM</b><br> DL for Remote Sensing<br><br>
-                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
-                              <b>11:30 AM - 12:30 PM</b><br> DL for Thermal Imaging<br><br>
-                              <b>12:30 - 1:30 PM</b><br> Self supervised Learning for Vision<br><br>
-                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
-                              <b>3:00 - 5:00 PM</b><br> DL for Underwater Vision <br> & Hands-on<br><br>
-                      </p>  
-                        
-                        <div class="ScheduleBanner">
-                            <h4>10th January (Friday), 2025</h4>
-                        </div>
-                        
-                      <p  class="section-subheading Home text-muted" >
-                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
-                              <b>10:00 - 11:00 AM</b><br> DL for NLP - I<br><br>
-                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
-                              <b>11:30 AM - 12:30 PM</b><br> DL for NLP - II<br><br>
-                              <b>12:30 - 1:30 PM</b><br> DL for NLP - III<br><br>
-                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
-                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
-                      </p>  
-                        
-                        <div class="ScheduleBanner">
-                            <h4>11th January (Saturday), 2025</h4>
-                        </div>
-                        
-                      <p  class="section-subheading Home text-muted" >
-                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
-                              <b>10:00 - 11:00 AM</b><br> Generative AI - I<br><br>
-                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
-                              <b>11:30 AM - 12:30 PM</b><br> Generative AI - II<br><br>
-                              <b>12:30 - 1:30 PM</b><br> Generative AI - III<br><br>
-                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
-                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
-                      </p>  
-                        
-                        <div class="ScheduleBanner">
-                            <h4>12th January (Sunday), 2025</h4>
-                        </div>
-                        
-                      <p  class="section-subheading Home text-muted" >
-                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
-                              <b>10:00 - 11:00 AM</b><br> DL for Network<br><br>
-                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
-                              <b>11:30 AM - 12:30 PM</b><br>DL for Vehicular Network<br><br>
-                              <b>12:30 - 1:30 PM</b><br> DL for Cyber Security<br><br>
-                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
-                              <b>3:00 - 5:00 PM</b><br> Hands-on<br><br>
-                      </p>  
-                        
-                        <div class="ScheduleBanner">
-                            <h4>13th January (Monday), 2025</h4>
-                        </div>
-                      <p  class="section-subheading Home text-muted" >
-                              <b>9:00 - 10:00 AM</b><br> Expert Lecture<br><br>
-                              <b>10:00 - 11:00 AM</b><br>Explainable AI<br><br>
-                              <b>11:00 - 11:30 AM</b><br> High Tea<br><br>
-                              <b>11:30 AM - 12:30 PM</b><br>Fairness in AI<br><br>
-                              <b>12:30 - 1:30 PM</b><br> DL Applications<br><br>
-                              <b>1:30 - 3:00 PM</b><br> Lunch<br><br>
-                              <b>3:00 - 5:00 PM</b><br> Valedictory<br><br>
-                      </p> 
+        <div style="display: none;" id="responsiveTable2">
+                <div class="schedule-container">
+                <!-- Left vertical day navigation -->
+                <div class="schedule-nav">
+                  <ul>
+                    <li class="active" onclick="showDay(0)">30 June</li>
+                    <li onclick="showDay(1)">1 July</li>
+                    <li onclick="showDay(2)">2 July</li>
+                    <li onclick="showDay(3)">3 July</li>
+                    <li onclick="showDay(4)">4 July</li>
+                    <li onclick="showDay(5)">5 July</li>
+                    <li onclick="showDay(6)">6 July</li>
+                    <li onclick="showDay(7)">7 July</li>
+                  </ul>
+                </div>
 
-                </div> -->
+                <!-- Right daily schedule -->
+                <div class="schedule-content">
+                  <div class="day" id="day0" style="display: block;">
+                      <u><b>30<sup>th</sup> June, 2025 (Monday)</b></u>
+                      <p>
+                              <span style="color:lightgreen;">09:00 - 10:00 &nbsp;&nbsp; <b>Inauguration</b></span><br><br>
+                              10:00 - 11:00 &nbsp;&nbsp; <b>Keynote Talk</b><br><br>
+                              <span style="color:gray;">11:00 - 11:30 &nbsp;&nbsp; <b>High Tea</b></span><br><br>
+                              11:30 - 12:30 &nbsp;&nbsp; <b>Machine Learning - I</b><br><br>
+                              12:30 - 13:30 &nbsp;&nbsp; <b>Machine Learning - II</b><br><br>
+                              <span style="color:gray;">13:30 - 15:00 &nbsp;&nbsp; <b>Lunch</b></span><br><br>
+                              15:00 - 17:00 &nbsp;&nbsp; <b>Hands-on I</b>
+                      </p> 
+                  </div>
+                  <div class="day" id="day1" style="display:none;">
+                      <u><b>1<sup>st</sup> July, 2025 (Tuesday)</b></u>
+                      <p>
+                              09:00 - 10:00 &nbsp;&nbsp; <b>Keynote Talk</b><br><br>
+                              10:00 - 11:00 &nbsp;&nbsp; <b>Deep Learning - I</b><br><br>
+                              <span style="color:gray;">11:00 - 11:30 &nbsp;&nbsp; <b>High Tea</b></span><br><br>
+                              11:30 - 12:30 &nbsp;&nbsp; <b>Deep Learning - II</b><br><br>
+                              12:30 - 13:30 &nbsp;&nbsp; <b>Deep Learning - III</b><br><br>
+                              <span style="color:gray;">13:30 - 15:00 &nbsp;&nbsp; <b>Lunch</b></span><br><br>
+                              15:00 - 17:00 &nbsp;&nbsp; <b>Hands-on II</b>
+                      </p> 
+                  </div>
+                  <div class="day" id="day2" style="display:none;">
+                      <u><b>2<sup>nd</sup> July, 2025 (Wednesday)</b></u>
+                      <p>
+                              09:00 - 10:00 &nbsp;&nbsp; <b>Keynote Talk</b><br><br>
+                              10:00 - 11:00 &nbsp;&nbsp; <b>Language Modelling - I</b><br><br>
+                              <span style="color:gray;">11:00 - 11:30 &nbsp;&nbsp; <b>High Tea</b></span><br><br>
+                              11:30 - 12:30 &nbsp;&nbsp; <b>Language Modelling - II</b><br><br>
+                              12:30 - 13:30 &nbsp;&nbsp; <b>Language Modelling - III</b><br><br>
+                              <span style="color:gray;">13:30 - 15:00 &nbsp;&nbsp; <b>Lunch</b></span><br><br>
+                              15:00 - 17:00 &nbsp;&nbsp; <b>Hands-on III</b>
+                      </p> 
+                  </div>
+                  <div class="day" id="day3" style="display:none;">
+                      <u><b>3<sup>rd</sup> July, 2025 (Thursday)</b></u>
+                      <p>
+                              09:00 - 10:00 &nbsp;&nbsp; <b>Keynote Talk</b><br><br>
+                              10:00 - 11:00 &nbsp;&nbsp; <b>Vision Modelling - I</b><br><br>
+                              <span style="color:gray;">11:00 - 11:30 &nbsp;&nbsp; <b>High Tea</b></span><br><br>
+                              11:30 - 12:30 &nbsp;&nbsp; <b>Vision Modelling - II</b><br><br>
+                              12:30 - 13:30 &nbsp;&nbsp; <b>Vision Modelling - III</b><br><br>
+                              <span style="color:gray;">13:30 - 15:00 &nbsp;&nbsp; <b>Lunch</b></span><br><br>
+                              15:00 - 17:00 &nbsp;&nbsp; <b>Hands-on IV</b>
+                      </p>  
+                  </div>
+                  <div class="day" id="day4" style="display:none;">
+                      <u><b>4<sup>th</sup> July, 2025 (Friday)</b></u>
+                      <p>
+                              09:00 - 10:00 &nbsp;&nbsp; <b>Keynote Talk</b><br><br>
+                              10:00 - 11:00 &nbsp;&nbsp; <b>Vision Modelling - IV</b><br><br>
+                              <span style="color:gray;">11:00 - 11:30 &nbsp;&nbsp; <b>High Tea</b></span><br><br>
+                              11:30 - 12:30 &nbsp;&nbsp; <b>Artificial Intelligence - I</b><br><br>
+                              12:30 - 13:30 &nbsp;&nbsp; <b>Artificial Intelligence - II</b><br><br>
+                              <span style="color:gray;">13:30 - 15:00 &nbsp;&nbsp; <b>Lunch</b></span><br><br>
+                              15:00 - 17:00 &nbsp;&nbsp; <b>Hands-on V</b>
+                      </p>  
+                  </div>
+                  <div class="day" id="day5" style="display:none;">
+                      <u><b>5<sup>th</sup> July, 2025 (Saturday)</b></u>
+                      <p>
+                              09:00 - 10:00 &nbsp;&nbsp; <b>Keynote Talk</b><br><br>
+                              10:00 - 11:00 &nbsp;&nbsp; <b>Generative AI - I</b><br><br>
+                              <span style="color:gray;">11:00 - 11:30 &nbsp;&nbsp; <b>High Tea</b></span><br><br>
+                              11:30 - 12:30 &nbsp;&nbsp; <b>Generative AI - II</b><br><br>
+                              12:30 - 13:30 &nbsp;&nbsp; <b>Generative AI - III</b><br><br>
+                              <span style="color:gray;">13:30 - 15:00 &nbsp;&nbsp; <b>Lunch</b></span><br><br>
+                              15:00 - 17:00 &nbsp;&nbsp; <b>Hands-on VI</b>
+                      </p>   
+                  </div>
+                  <div class="day" id="day6" style="display:none;">
+                      <u><b>6<sup>th</sup> July, 2025 (Sunday)</b></u>
+                      <p>
+                              09:00 - 10:00 &nbsp;&nbsp; <b>Keynote Talk</b><br><br>
+                              10:00 - 11:00 &nbsp;&nbsp; <b>Explainable AI - I</b><br><br>
+                              <span style="color:gray;">11:00 - 11:30 &nbsp;&nbsp; <b>High Tea</b></span><br><br>
+                              11:30 - 12:30 &nbsp;&nbsp; <b>Explainable AI - II</b><br><br>
+                              12:30 - 13:30 &nbsp;&nbsp; <b>Fairness in AI</b><br><br>
+                              <span style="color:gray;">13:30 - 15:00 &nbsp;&nbsp; <b>Lunch</b></span><br><br>
+                              15:00 - 17:00 &nbsp;&nbsp; <b>Hands-on VII</b>
+                      </p>  
+                  </div>
+                  <div class="day" id="day7" style="display:none;">
+                      <u><b>7<sup>th</sup> July, 2025 (Monday)</b></u>
+                      <p>
+                              09:00 - 10:00 &nbsp;&nbsp; <b>Keynote Talk</b><br><br>
+                              10:00 - 11:00 &nbsp;&nbsp; <b>AI for Security</b><br><br>
+                              <span style="color:gray;">11:00 - 11:30 &nbsp;&nbsp; <b>High Tea</b></span><br><br>
+                              11:30 - 12:30 &nbsp;&nbsp; <b>AI for Network Security - I</b><br><br>
+                              12:30 - 13:30 &nbsp;&nbsp; <b>AI for Network Security - II</b><br><br>
+                              <span style="color:gray;">13:30 - 15:00 &nbsp;&nbsp; <b>Lunch</b></span><br><br>
+                              <span style="color:orange;">15:00 - 17:00 &nbsp;&nbsp; <b>Valedictory</b></span>
+                      </p>  
+                  </div>
+                </div>
+              </div>
+        </div>
                 <script>
                   // Script to show table only if screen width is greater than 800px
                   if (window.innerWidth > 800) {
@@ -1381,11 +1444,30 @@ section {
 <!-- ################################################ -->
 <!-- ################################################ -->
 <!-- ################################################ -->
+<script>
+function showDay(index) {
+  const days = document.querySelectorAll('.day');
+  const tabs = document.querySelectorAll('.schedule-nav li');
+
+  // Hide all day content and remove active from all tabs
+  days.forEach((day, i) => {
+    day.classList.remove('active');
+    day.style.display = 'none';
+  });
+  tabs.forEach(tab => tab.classList.remove('active'));
+
+  // Show selected day and mark tab as active
+  days[index].classList.add('active');
+  days[index].style.display = 'block';
+  tabs[index].classList.add('active');
+}
+
+</script>
 
 
 <script>
 /* --------------- CONFIG --------------- */
-const DEADLINE = new Date("2025-06-27T23:59:59+05:30");  // 11:59 PM IST
+const DEADLINE = new Date("2025-06-27T23:59:59+05:30");  // 11:59 IST
 /* -------------------------------------- */
 
 window.addEventListener("load", () => {
