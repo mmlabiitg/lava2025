@@ -749,14 +749,14 @@ section {
 .day.active {
   display: block;
 }
+
+/* === blink highlight === */
 .deadline-blink {
   color: red;
   font-weight: bold;
   font-size: 1.5em;
   animation: blink 1s linear infinite;
 }
-
-
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -809,9 +809,12 @@ section {
     <div class="logotext">
         <div class="logotext-heading">Summer School at IIT Guwahati</div>
         <div class="logotext-subheading">30 June – 7 July</div>
-<div class="deadline-blink">
-  ✨ Deadline Extended till 29th June, 2025, 11:59pm ✨
-</div>
+
+        <!--
+        <div class="deadline-blink">
+          ✨ Deadline Extended till 29th June, 2025, 11:59pm ✨
+        </div>
+        -->
 
         <h1 class="lava-title">
             Language And Vision<br>with AI/ML
